@@ -18,6 +18,10 @@ app.use(express.json());
 app.use(cors({ origin: ENV.CLIENT_URL, credentials: true }));
 app.use("/api/inngest", serve({ client: inngest, functions }));
 
+//adds auth to the req object
+app.use(clerkMiddleware());
+
+
 // backend, when somebody sends a get the server respons with res.statu and a json message
 
 
