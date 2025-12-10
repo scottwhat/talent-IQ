@@ -7,6 +7,8 @@ import { clerkMiddleware } from "@clerk/express";
 import { ENV } from "./lib/env.js";
 import { connectDB } from "./lib/db.js";
 import { inngest, functions } from "./lib/inngest.js";
+import { protectRoute } from "./middleware/protectRoute.js";
+import chatRoutes from "./routes/chatRoutes.js";
 
 
 const app = express();
@@ -21,9 +23,7 @@ app.use("/api/inngest", serve({ client: inngest, functions }));
 //adds auth to the req object
 app.use(clerkMiddleware());
 
-
-// backend, when somebody sends a get the server respons with res.statu and a json message
-
+app.use('/api/chat', chatRoutes)
 
 if (ENV.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/dist")));
