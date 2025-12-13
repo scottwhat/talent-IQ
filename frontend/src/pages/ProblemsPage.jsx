@@ -27,12 +27,7 @@ function ProblemsPage() {
 
         {/* PROBLEMS LIST */}
         <div className="space-y-4">
-          
-          {/* Render each problem as a card
-          //TODO: refactor problem card component 
-          */}
           {problems.map((problem) => (
-            // make clicakble card that links to problem page '/problem/:id'
             <Link
               key={problem.id}
               to={`/problem/${problem.id}`}

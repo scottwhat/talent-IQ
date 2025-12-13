@@ -11,7 +11,6 @@ import SessionPage from "./pages/SessionPage";
 function App() {
   const { isSignedIn, isLoaded } = useUser();
 
-  //flickering comes from clerk trying t
   // this will get rid of the flickering effect
   if (!isLoaded) return null;
 
@@ -26,9 +25,7 @@ function App() {
         <Route path="/session/:id" element={isSignedIn ? <SessionPage /> : <Navigate to={"/"} />} />
       </Routes>
 
-
-      <Toaster toastOptions={{ duration: 3000 }} /> 
-      
+      <Toaster toastOptions={{ duration: 3000 }} />
     </>
   );
 }

@@ -6,8 +6,7 @@ function Navbar() {
   const location = useLocation();
 
   console.log(location);
-  
-// helper function to check if the link is active//
+
   const isActive = (path) => location.pathname === path;
 
   return (
