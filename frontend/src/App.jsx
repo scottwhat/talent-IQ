@@ -11,6 +11,7 @@ import SessionPage from "./pages/SessionPage";
 function App() {
   const { isSignedIn, isLoaded } = useUser();
 
+  //flickering comes from clerk trying t
   // this will get rid of the flickering effect
   if (!isLoaded) return null;
 
