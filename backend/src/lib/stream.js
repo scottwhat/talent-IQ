@@ -12,9 +12,6 @@ if (!apiKey || !apiSecret) {
 export const chatClient = StreamChat.getInstance(apiKey, apiSecret); // will be used chat features
 export const streamClient = new StreamClient(apiKey, apiSecret); // will be used for video calls
 
-
-//make methods on the client for updating and deleting the user on tthe STREAM platform for your service
-// this keeps the user in sync with your own database
 export const upsertStreamUser = async (userData) => {
   try {
     await chatClient.upsertUser(userData);
@@ -32,5 +29,3 @@ export const deleteStreamUser = async (userId) => {
     console.error("Error deleting the Stream user:", error);
   }
 };
-
-//todo: method to generate token  

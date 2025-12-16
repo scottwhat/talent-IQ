@@ -1,20 +1,16 @@
 import mongoose from "mongoose";
 
-import { ENV } from "../lib/env.js";
+import { ENV } from "./env.js";
 
-//make a connectDB function, this should be asyncawait
-// using mongoose connect, with the DB url from the ENV file
-// make it a try catch approach with async await 
 export const connectDB = async () => {
-    try {
-        //using mongoose 
-        const conn = await mongoose.connect(ENV.DB_URL)
-        
-        console.log("✅ connected to mongo db ", conn.connection.host) 
+  try {
+    if (!ENV.DB_URL) {
+      throw new Error("DB_URL is not defined in environment variables");
     }
-
-    catch(e) {
-        console.error("Error connecting to DB", e)
-        process.exit(1)//0 means success, 1 means failure 
-    }
-}
+    const conn = await mongoose.connect(ENV.DB_URL);
+    console.log("✅ Connected to MongoDB:", conn.connection.host);
+  } catch (error) {
+    console.error("❌ Error connecting to MongoDB", error);
+    process.exit(1); // 0 means success, 1 means failure
+  }
+};
