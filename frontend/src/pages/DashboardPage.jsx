@@ -14,9 +14,7 @@ function DashboardPage() {
   const navigate = useNavigate();
   const { user } = useUser();
   const [showCreateModal, setShowCreateModal] = useState(false);
-  const [roomConfig, setRoomConfig] = useState({ problem: "", difficulty: "" });  
- 
-
+  const [roomConfig, setRoomConfig] = useState({ problem: "", difficulty: "" });
 
   const createSessionMutation = useCreateSession();
 
@@ -26,20 +24,14 @@ function DashboardPage() {
   const handleCreateRoom = () => {
     if (!roomConfig.problem || !roomConfig.difficulty) return;
 
-    //passes  in problem and difficult + an object for on Success 
-    // manages the UI + the 
-    // .mutate for db updates 
     createSessionMutation.mutate(
       {
         problem: roomConfig.problem,
-        difficulty: roomConfig.difficulty.toLowerCase(), 
+        difficulty: roomConfig.difficulty.toLowerCase(),
       },
       {
         onSuccess: (data) => {
           setShowCreateModal(false);
-          // use navigate after successful creating and forward to the session page / 
-
-          //update welcome session 
           navigate(`/session/${data.session._id}`);
         },
       }

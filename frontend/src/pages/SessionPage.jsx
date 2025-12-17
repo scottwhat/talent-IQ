@@ -51,7 +51,6 @@ function SessionPage() {
     if (!session || !user || loadingSession) return;
     if (isHost || isParticipant) return;
 
-  
     joinSessionMutation.mutate(id, { onSuccess: refetch });
 
     // remove the joinSessionMutation, refetch from dependencies to avoid infinite loop
@@ -62,7 +61,6 @@ function SessionPage() {
     if (!session || loadingSession) return;
 
     if (session.status === "completed") navigate("/dashboard");
-    
   }, [session, loadingSession, navigate]);
 
   // update code when problem loads or changes

@@ -73,7 +73,6 @@ function useStreamClient(session, loadingSession, isHost, isParticipant) {
           if (chatClientInstance) await chatClientInstance.disconnectUser();
           await disconnectStreamClient();
         } catch (error) {
-          //give the singletons clear from memory leaks 
           console.error("Cleanup error:", error);
         }
       })();
